@@ -1,13 +1,15 @@
 <?php
-// Interface define os metodos que as classes precisam ter
-// Senior utiliza para determinar o caminho do programa
+
+// Classe abstrata define o que as demais classes devem fazer e seus metodos
+// Objeto nao instancia classe abstrata
+
 interface Veiculo{
   public function acelerar($velocidade);
   public function frear($velocidade);
   public function trocarMarcha($marcha);
 }
 
-class Civic implements Veiculo{
+abstract class Automovel implements Veiculo{
   public function acelerar($velocidade){
     echo "O veiculo acelerou ate ".$velocidade.'km/h';
   }
@@ -21,10 +23,13 @@ class Civic implements Veiculo{
     echo "O veiculo trocou a marcha para ".$marcha;
 
   }
-
-
 }
 
-$carro = new Civic();
-$carro->trocarMarcha(1);
-$carro->acelerar(100);
+class DelRey extends Automovel {
+  public function empurrar(){
+
+  }
+}
+
+$carro = new DelRey();
+$carro->acelerar(200);
